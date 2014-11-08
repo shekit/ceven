@@ -1,0 +1,96 @@
+<template name="login">
+
+	<div class="content">
+		<div class="content-padded">
+			<h1>Ceven {{message}}</h1>
+			{{#if currentUser}}
+				<a href="{{pathFor 'messages.index'}}" data-nav-direction="right" class="btn btn-positive btn-block">Update Me</a>
+				<a href="#" class="btn btn-link logout" data-toggle-modal="logoutModal">Logout</a>	
+			{{else}}
+				<button type="button" class="btn btn-positive btn-block" data-toggle-modal="registerModal">Register</button>
+				<button type="button" class="btn btn-link" data-toggle-modal="loginModal">Login</button>
+			{{/if}}
+
+			{{#if loggingIn}}
+				{{logging}}
+			{{/if}}
+		</div>
+		
+		{{# if loggingIn}}
+			<div class="loading"></div>	
+		{{/if}}
+	</div>
+
+	
+
+	{{#contentFor "modals"}}
+
+		
+		{{>logoutPage}}
+
+		{{#unless currentUser}}
+			{{>registerForm}}
+		
+			{{>loginForm}}
+		{{/unless}}
+
+	
+	{{/contentFor}}
+
+	
+
+</template>
+
+<template name="registerForm">
+	<div id="registerModal" class="modal">
+		<header class="bar bar-nav">
+			<button type="button" class="btn btn-link btn-nav pull-right" data-toggle-modal="registerModal"><span class="icon icon-close"></span></button>
+		</header>
+
+		<div class="content">
+			<div class="content-padded">
+				<form>
+					<input type="email" id="register-email" placeholder="Email">
+					<input type="password" id="register-password" placeholder="Password">
+					<input type="submit" class="btn btn-positive btn-block" value="Register">
+				</form>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="loginForm">
+	<div id="loginModal" class="modal">
+		<header class="bar bar-nav">
+			<button type="button" class="btn btn-link btn-nav pull-right" data-toggle-modal="loginModal"><span class="icon icon-close"></span></button>
+		</header>
+
+		<div class="content">
+			<div class="content-padded">
+				<form>
+					<input type="email" id="login-email" placeholder="Email">
+					<input type="password" id="login-password" placeholder="Password">
+					<input type="submit" class="btn btn-positive btn-block" value="Login">
+				</form>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="logoutPage">
+	<div id="logoutModal" class="modal">
+      <header class="bar bar-nav">
+        <button type="button" class="btn btn-link btn-nav pull-right" data-toggle-modal="logoutModal"><span class="icon icon-close"></span></button>
+      </header>
+
+      <div class="content">
+        <div class="content-padded">
+         	<p>
+            	Cya tomorrow!
+
+          	</p> 
+        </div>
+      </div>
+    </div>
+
+</template>
