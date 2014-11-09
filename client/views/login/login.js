@@ -29,10 +29,9 @@ Template.login.events({
 });
 
 Template.login.helpers({
-	'logging': function(){
-		console.log("lalal");
-	}
-});
+	'message':'hello there'
+})
+
 
 
 Template.registerForm.events({
@@ -42,9 +41,8 @@ Template.registerForm.events({
 		var emailVar = template.find("#register-email").value;
 		var passwordVar = template.find("#register-password").value;
 
-		emailVar = emailVar.trim();
+		emailVar = emailVar.trim().toLowerCase();
 
-		Session.set('loading', true);
 		Accounts.createUser({
 			email: emailVar,
 			password: passwordVar
@@ -55,10 +53,8 @@ Template.registerForm.events({
 			} else {
 				Session.set('register','success');
 				console.log(Session.get('register'));
-				Router.go('messages.index');
+				Router.go('wrapper');
 			}
-
-			Session.set('loading', false);
 		});
 
 		template.find("#register-email").value = '';
@@ -77,8 +73,7 @@ Template.loginForm.events({
 		var emailVar = template.find("#login-email").value;
 		var passwordVar = template.find("#login-password").value;
 
-		emailVar = emailVar.trim();
-		Session.set('loading', true);
+		emailVar = emailVar.trim().toLowerCase();
 		Meteor.loginWithPassword(emailVar, passwordVar, function(error){
 			if(error) {
 				Session.set('login', 'error');
@@ -86,10 +81,8 @@ Template.loginForm.events({
 			} else {
 				Session.set('login', 'success');
 				console.log(Session.get('login'));
-				Router.go('messages.index');
+				Router.go('wrapper');
 			}
-
-			Session.set('loading', false);
 		});
 
 		if(Session.get('login') == 'error') {

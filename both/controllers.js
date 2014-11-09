@@ -1,5 +1,6 @@
 SplashController = RouteController.extend({
   layoutTemplate: 'splashLayout',
+  template: 'splash',
   action: function() {
     this.render('splash');
     Meteor.setTimeout(function() {
@@ -24,10 +25,10 @@ MessagesShowController = RouteController.extend({
   }
 });
 
-LoginController = RouteController.extend({
-  data: function() {
-    return{
-      message: "Hello there"
-    };
-  }
-});
+// LoginController = RouteController.extend({
+//   data: function() {
+//     return{
+//       message: "Hello there"
+//     };
+//   }
+// });

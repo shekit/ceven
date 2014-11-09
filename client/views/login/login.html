@@ -4,7 +4,7 @@
 		<div class="content-padded">
 			<h1>Ceven {{message}}</h1>
 			{{#if currentUser}}
-				<a href="{{pathFor 'messages.index'}}" data-nav-direction="right" class="btn btn-positive btn-block">Update Me</a>
+				<a href="{{pathFor 'wrapper'}}" data-nav-direction="right" class="btn btn-positive btn-block">Update Me</a>
 				<a href="#" class="btn btn-link logout" data-toggle-modal="logoutModal">Logout</a>	
 			{{else}}
 				<button type="button" class="btn btn-positive btn-block" data-toggle-modal="registerModal">Register</button>
@@ -15,7 +15,7 @@
 				{{logging}}
 			{{/if}}
 		</div>
-		
+
 		{{# if loggingIn}}
 			<div class="loading"></div>	
 		{{/if}}

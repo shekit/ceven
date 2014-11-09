@@ -38,3 +38,9 @@ Template.appLayout.events({
     navDirection = $(event.currentTarget).data('nav-direction');
   }
 });
+
+Template.registerHelper('formatDate', function(context, options){
+  if(context) {
+    return moment(context).format('DD/MM/YYYY');
+  }
+});

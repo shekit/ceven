@@ -1,0 +1,75 @@
+<template name="digestList">
+	
+	<header class="bar bar-nav">
+		<a href="{{ pathFor route='digestAdd' }}" class="icon icon-plus pull-right"  data-nav-direction="right"></a>
+		<h1 class="title">Digests</h1>
+	</header>
+
+	<div class="content">
+		<ul class="table-view">
+			{{#each digests}}
+				<li class="table-view-cell media">
+					<a href="{{ pathFor route='digestDetail' }}" data-nav-direction="right" class="navigate-right">
+						<div class="media-body">
+							<strong>Digest {{digestNumber}}</strong>
+							<p>{{ formatDate datePublished }}</p>
+							{{#if isDraft }}
+								<p><span class="badge badge-negative">Draft</span></p>	
+							{{else}}
+								<p><span class="badge badge-positive">Active</span></p>
+							{{/if}}
+						</div>
+					</a>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+
+	<div class="bar bar-standard bar-footer">
+  		<a href="{{ pathFor route='articleList' }}" class="btn btn-block btn-primary">Add Articles</a>
+	</div>
+</template>
+
+
+
+
+<template name="digestDetail">
+	<header class="bar bar-nav">
+		<a href="{{ pathFor route='digestList'}}" class="pull-left" data-nav-direction="left"><span class="icon icon-left-nav"></span> Back</a>
+		<h1 class="title">Digest {{ digest.digestNumber }}</h1>
+	</header>
+
+	<div class="content">
+		<div class="content-padded">
+			{{#if digest.isDraft}}
+				<a href="#" id="activateDigest" class="btn btn-positive btn-block">Activate</a>
+			{{else}}
+				<a href="#" id="deactivateDigest" class="btn btn-negative btn-block btn-outlined">Deactivate</a>
+			{{/if}}
+			<br><br>
+			<a href="{{ pathFor route='digestList' }}" id="deleteDigest" class="btn btn-negative btn-block" data-nav-direction="left">Delete Digest</a>
+		</div>
+
+	</div>
+
+</template>
+
+
+
+
+<template name="digestAdd">
+	<header class="bar bar-nav">
+		<a href="{{ pathFor 'digestList'}}" class="pull-left" data-nav-direction="left"><span class="icon icon-left-nav"></span> Back</a>
+		<h1 class="title">Add Digest</h1>
+	</header>
+
+	<div class="content">
+		<div class="content-padded">
+			<form>
+				<input type="text" name="digestNumber" placeholder="Digest number"/>
+				<input type="submit" class="btn btn-positive btn-block" value="Add Digest">
+			</form>
+		</div>
+
+	</div>
+</template>

@@ -1,0 +1,67 @@
+<template name="wrapper">
+	<div class="content">
+		<div class="wrapper">
+		{{>slider templateNames=templateNames}}
+		</div>
+	</div>
+</template>
+
+<template name="slider">
+	<div class="mask">
+		<div class="pages">
+		{{#each pages}}
+			<div class="page {{name}}">
+				{{> template}}
+			</div>
+		{{/each}}
+		</div>
+	</div>
+
+</template>
+
+<template name="timeToRead">
+	<h1>{{time}}</h1>
+	<p>Swipe left to continue reading</p>
+</template>
+
+<template name="articleOne">
+	<h1>{{ title }}</h1>
+</template>
+
+<template name="articleTwo">
+	<h1>{{ title }}</h1>
+</template>
+
+<template name="articleThree">
+	<h1>{{ title }}</h1>
+</template>
+
+<template name="articleFour">
+	<h1>{{ title }}</h1>
+</template>
+
+<template name="articleFive">
+	<h1>{{ title }}</h1>
+</template>
+
+<template name="articleSix">
+	<h1>{{ title }}</h1>
+</template>
+
+<template name="articleSeven">
+	<h1>{{ title }}</h1>
+</template>
+
+<template name="rateDigest">
+	<h1>{{ rate }}</h1>
+	<a href="{{ pathFor 'thankYou' }}" class="btn btn-positive btn-block" data-nav-direction="right"> Rate it good </a> 
+
+</template>
+
+<template name="thankYou">
+	<div class="content">
+		<div class="content-padded">
+			<h1>{{streak}}</h1>
+		</div>
+	</div>
+</template>

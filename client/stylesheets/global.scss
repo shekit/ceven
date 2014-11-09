@@ -26,6 +26,7 @@ body {
   -webkit-font-smoothing: antialiased; // Fix for webkit rendering
 }
 
+/* overlay with white transparent screen while loading */
 .loading {
   width: 100%;
   height: 100%;
@@ -35,6 +36,86 @@ body {
   left: 0;
   background: rgba(255,255,255,0.6);
 }
+
+/* SLIDER */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  height: 100%;
+  //background-color: white;
+  margin: 0 auto;
+}
+.mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+}
+.mask .pages {
+  width: 900%;
+  height: 100%;
+  /* display: inline-flex; */
+}
+
+.mask .pages .page {
+  width: 11.11%;
+  height: 100%;
+  float: left;
+  }
+
+
+.timeToRead {
+  background-color: red;
+}
+
+.articleOne {
+  background-color: #5b0e9b;
+
+}
+.articleTwo {
+  background-color: #0e629b;
+
+}
+.articleThree {
+  background-color: #0e9b7b;
+}
+
+.articleFour {
+  background-color: red;
+}
+
+.articleFive {
+  background-color: orange;
+}
+
+.articleSix {
+  background-color: blue;
+}
+
+.articleSeven {
+  background-color: green;
+}
+
+.rateDigest {
+    background-color: yellow;
+}
+
+.animate {
+  transition: transform 0.3s ease-out;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+}
+
+.customModal {
+
+  width: 11.1%;
+}
+
+/* END OF SLIDER */
 
 @media screen and (max-width: 768px) {
   .device {

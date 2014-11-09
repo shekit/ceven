@@ -1,0 +1,65 @@
+<template name="articleList">
+	
+	<header class="bar bar-nav">
+		<a href="{{ pathFor route='articleAdd' }}" class="icon icon-plus pull-right"  data-nav-direction="right"></a>
+		<h1 class="title">Articles</h1>
+	</header>
+
+	<div class="content">
+		<ul class="table-view">
+			{{#each articles}}
+				<li class="table-view-cell media">
+					<a href="{{ pathFor route='articleDetail' }}" data-nav-direction="right" class="navigate-right article-detail">
+						<div class="media-body">
+							<strong>{{title}}}}</strong>
+							<p>{{ formatDate datePublished }}</p>
+							<p><span class="badge badge-negative">{{digest}}</span></p>	
+
+						</div>
+					</a>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</template>
+
+
+
+
+<template name="articleDetail">
+	<header class="bar bar-nav">
+		<a href="{{ pathFor route='articleList'}}" class="pull-left" data-nav-direction="left"><span class="icon icon-left-nav"></span> Back</a>
+		<h1 class="title">Article</h1>
+	</header>
+
+	<div class="content">
+		<div class="content-padded">
+			
+			<!-- EDIT ARTICLE -->
+		</div>
+
+	</div>
+
+</template>
+
+
+
+
+<template name="articleAdd">
+	<header class="bar bar-nav">
+		<a href="{{ pathFor route='articleList'}}" class="pull-left" data-nav-direction="left"><span class="icon icon-left-nav"></span> Back</a>
+		<h1 class="title">Add Article</h1>
+	</header>
+
+	<div class="content">
+		<div class="content-padded">
+			<form>
+				<input type="text" name="articleTitle" placeholder="Title"/>
+				<textarea rows="5" placeholder="Enter short summary"></textarea>
+				<input type="text" name="articleLink" placeholder="Link to Original Article"/>
+				<input type="submit" class="btn btn-positive btn-block" value="Add Article">
+			</form>
+		</div>
+
+	</div>
+</template>

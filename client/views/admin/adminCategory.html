@@ -1,0 +1,74 @@
+<template name="categoryList">
+	
+	<header class="bar bar-nav">
+		<a href="{{ pathFor route='categoryAdd' }}" class="icon icon-plus pull-right"  data-nav-direction="right"></a>
+		<h1 class="title">Categories</h1>
+	</header>
+
+	<div class="content">
+		<ul class="table-view">
+			{{#each categories}}
+				<li class="table-view-cell media">
+					<a href="{{ pathFor route='categoryDetail' }}" data-nav-direction="right" class="navigate-right">
+						<div class="media-body">
+							<strong>{{ name }}</strong>
+							{{#if isDraft }}
+								<p><span class="badge badge-negative">Draft</span></p>	
+							{{else}}
+								<p><span class="badge badge-positive">Active</span></p>
+							{{/if}}
+						</div>
+					</a>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+
+	<div class="bar bar-standard bar-footer">
+  		<a href="{{ pathFor route='articleList' }}" class="btn btn-block btn-primary">Add Articles</a>
+	</div>
+</template>
+
+
+
+
+<template name="categoryDetail">
+	<header class="bar bar-nav">
+		<a href="{{ pathFor route='categoryList' }}" class="pull-left" data-nav-direction="left"><span class="icon icon-left-nav"></span> Back</a>
+		<h1 class="title">{{ category.name }}</h1>
+	</header>
+
+	<div class="content">
+		<div class="content-padded">
+			{{#if category.isDraft}}
+				<a href="#" id="activateCategory" class="btn btn-positive btn-block">Activate</a>
+			{{else}}
+				<a href="#" id="deactivateCategory" class="btn btn-negative btn-block btn-outlined">Deactivate</a>
+			{{/if}}
+			<br><br>
+			<a href="{{ pathFor route='categoryList' }}" id="deleteCategory" class="btn btn-negative btn-block" data-nav-direction="left">Delete Category</a>
+		</div>
+
+	</div>
+
+</template>
+
+
+
+
+<template name="categoryAdd">
+	<header class="bar bar-nav">
+		<a href="{{ pathFor 'categoryList'}}" class="pull-left" data-nav-direction="left"><span class="icon icon-left-nav"></span> Back</a>
+		<h1 class="title">Add Category</h1>
+	</header>
+
+	<div class="content">
+		<div class="content-padded">
+			<form>
+				<input type="text" name="categoryName" placeholder="Category Name"/>
+				<input type="submit" class="btn btn-positive btn-block" value="Add Category">
+			</form>
+		</div>
+
+	</div>
+</template>
